@@ -2,10 +2,10 @@ const html =  document.querySelector("html");
 const bt = document.querySelectorAll(".app__card-button");
 const imagem = document.querySelector(".app__image");
 const titulo = document.querySelector('.app__title');
-const audio = new Audio('sons/videoplayback.m4a');
-const audioPlay = new Audio('sons/play.wav');
-const audioPause = new Audio('sons/pause.mp3');
-const audioFim = new Audio('sons/beep.mp3');
+const audio = new Audio('./sons/videoplayback.m4a');
+const audioPlay = new Audio('./sons/play.wav');
+const audioPause = new Audio('./sons/pause.mp3');
+const audioFim = new Audio('./sons/beep.mp3');
 const btnMusica = document.querySelector(".toggle-checkbox");
 const start = document.querySelector("#start-pause");
 const divTimer = document.querySelector("#timer");
@@ -29,7 +29,7 @@ bt.forEach((btn, key) => {
         const ctx = btn.getAttribute('data-contexto');
         context = ctx;
         html.setAttribute('data-contexto', ctx);
-        imagem.setAttribute('src', `Fokus/imagens/${ctx}.png`);
+        imagem.setAttribute('src', `./imagens/${ctx}.png`);
        
         bt.forEach((r) => {
             r.classList.remove('active');
@@ -69,7 +69,7 @@ const contagemRegressiva = () => {
         tempoDecorrido = context == 'descanso-curto' ? 300 : context == 'descanso-longo' ? 900 : 1500;
         mostraTempo();
         zerar();
-        start.innerHTML = '<img class="app__card-primary-butto-icon" src="Fokus/imagens/play_arrow.png" alt=""><span>Começar</span>';
+        start.innerHTML = '<img class="app__card-primary-butto-icon" src="./imagens/play_arrow.png" alt=""><span>Começar</span>';
         return;
     }
     mostraTempo();
@@ -79,11 +79,11 @@ const contagemRegressiva = () => {
 start.addEventListener('click', iniciar);
 
 function iniciar(){
-    start.innerHTML = '<img class="app__card-primary-butto-icon" src="Fokus/imagens/pause.png" alt=""><span>Pausar</span>';
+    start.innerHTML = '<img class="app__card-primary-butto-icon" src="./imagens/pause.png" alt=""><span>Pausar</span>';
     if(intervaloId){
         audioPause.play();
         zerar();
-        start.innerHTML = '<img class="app__card-primary-butto-icon" src="Fokus/imagens/play_arrow.png" alt=""><span>Começar</span>';
+        start.innerHTML = '<img class="app__card-primary-butto-icon" src="./imagens/play_arrow.png" alt=""><span>Começar</span>';
         return;
     }
     audioPlay.play();
